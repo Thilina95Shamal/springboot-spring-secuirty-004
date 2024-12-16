@@ -1,0 +1,6 @@
+Newer Version and Older Version(commented) Security Implementation for migration
+Authentication & Authorization based on user credentials and authorities (user-roles)
+Generation of both Refresh Token and Access Token based on Username and Authorities and how each are maintained
+    - Secure Vault - Refresh token
+    - HttpOnly Headers/DB - Access token
+

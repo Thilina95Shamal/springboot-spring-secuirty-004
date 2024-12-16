@@ -1,0 +1,29 @@
+ Content
+    - Basic user-role structure impl, with the given sample Data provided
+    - Older version (Spring 5<) Implementation(commented)
+    - Re-implemented with Newer Version
+        Changes :
+            - SecurityConfig impl not much big difference but some are like Naming , methods, interfaces , impl
+            - regrading Filters like (UsernamePasswordAuthenticationFilter)
+            (in newer no need to custom filter it directly handles but controller with less lines of code)
+            (also in the newer you should or rather u must have a /login  to implement the Authentication)
+                Older Version: Uses custom filters to handle authentication and token generation.
+                Newer Version: Simplifies the process by handling authentication
+                    and token generation within controller endpoints.
+    - How plain text password when login is handle with bcpryt password in db
+        Internally: (no need for additionally impl spring sec takes care of it)
+            reason is bcz we provided this : provider.setPasswordEncoder(new BCryptPasswordEncoder(12)
+            -Step
+                At Registration plain text password is hashed
+                At Login
+                plain text password hashed again and compared to the stored hash
+
+Reason why Refresh Token are sent to the client
+Aspect	Access Token	                                            Refresh Token
+    Usage	Sent with every API request.	                            Used only to get a new access token.
+    Storage	Often stored in-memory or in headers (less secure).	        Stored in HTTP-only cookies (more secure).
+    Exposure Risk	Exposed frequently via network requests.	        Exposed rarely, only during refresh operations.
+    Lifespan	Short-lived (minutes to hours).	                        Long-lived (days to weeks).
+    Risk Mitigation	Compromise leads to limited damage.	                Requires additional safeguards like revocation.
+
+
